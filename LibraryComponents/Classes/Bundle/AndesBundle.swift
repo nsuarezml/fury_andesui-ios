@@ -9,7 +9,7 @@ import Foundation
 
 public class AndesBundle {
     public static func bundle() -> Bundle {
-        if let path = Bundle(for: self).path(forResource: "AndesUI", ofType: "bundle"),
+        if let path = Bundle(for: self).path(forResource: "AndesUIResources", ofType: "bundle"),
             let bundle = Bundle(path: path) {
             return bundle
         }

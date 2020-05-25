@@ -31,4 +31,33 @@ internal extension UIView {
         self.topAnchor.constraint(equalTo: superview.topAnchor, constant: top).isActive = true
         self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: bottom).isActive = true
     }
+
+    func setCornerRadius(cornerRadius: CGFloat, roundedCorners: CACornerMask) {
+
+        if #available(iOS 11.0, *) {
+            self.layer.cornerRadius = cornerRadius
+            self.layer.maskedCorners = roundedCorners
+        } else {
+            // Fallback on earlier versions
+            var cornerMask = UIRectCorner()
+            if roundedCorners.contains(.layerMinXMinYCorner) {
+                cornerMask.insert(.topLeft)
+            }
+            if roundedCorners.contains(.layerMaxXMinYCorner) {
+                cornerMask.insert(.topRight)
+            }
+            if roundedCorners.contains(.layerMinXMaxYCorner) {
+                cornerMask.insert(.bottomLeft)
+            }
+            if roundedCorners.contains(.layerMaxXMaxYCorner) {
+                cornerMask.insert(.bottomRight)
+            }
+
+            let rectShape = CAShapeLayer()
+            rectShape.bounds = self.frame
+            rectShape.position = self.center
+            rectShape.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: cornerMask, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
+            self.layer.mask = rectShape
+        }
+    }
 }

@@ -3,12 +3,12 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AndesTextAreaView" customModule="AndesUI" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AndesTextAreaView" customModule="AndesUI">
             <connections>
                 <outlet property="counterLabel" destination="yHM-MY-Oip" id="EJ7-eV-75c"/>
                 <outlet property="fieldView" destination="jQF-k4-Vbe" id="ils-8Y-d8p"/>
@@ -38,7 +38,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="412" placeholderIntrinsicHeight="92" contentInsetAdjustmentBehavior="always" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jQF-k4-Vbe" customClass="AndesUITextView" customModule="AndesUI" customModuleProvider="target">
+                <textView multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="412" placeholderIntrinsicHeight="92" contentInsetAdjustmentBehavior="always" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jQF-k4-Vbe" customClass="AndesUITextView" customModule="AndesUI">
                     <rect key="frame" x="2" y="67" width="408" height="107"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>

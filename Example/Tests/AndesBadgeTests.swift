@@ -62,6 +62,31 @@ class AndesBadgeTests: QuickSpec {
                     expect(contentView.layer.cornerRadius).to(equal(AndesBadgeSizeSmall().borderRadius))
                 }
             }
+
+            context("Badge Modifier: Dot") {
+                it("A Badge Dot by default should be neutral") {
+                    // Given
+                    let defaultType = AndesBadgeType.neutral
+
+                    // When
+                    let badge = AndesBadgeDot(frame: .zero)
+
+                    // Then
+                    expect(badge.type).to(equal(defaultType))
+                }
+                it("Set the right type when is custom") {
+                    // Given
+                    let highlightType = AndesBadgeType.highlight
+
+                    // When
+                    let badge = AndesBadgeDot(frame: .zero)
+                    badge.type = highlightType
+
+                    // Then
+                    expect(badge.type).to(equal(highlightType))
+                }
+            }
+
         }
         describe("AndesBadge should be able to change its UI dinamically") {
             context("AndesBadgePill view") {
@@ -114,6 +139,27 @@ class AndesBadgeTests: QuickSpec {
                     expect(contentView.bottom.constant).to(equal(sizeStyle.verticalPadding))
                     expect(contentView.left.constant).to(equal(sizeStyle.horizontalPadding))
                     expect(contentView.right.constant).to(equal(sizeStyle.horizontalPadding))
+                }
+            }
+
+            context("AndesBadgeDot view") {
+                var badge: AndesBadgeDot = AndesBadgeDot(frame: .zero)
+                var contentView: AndesBadgeViewDot = badge.contentView as! AndesBadgeViewDot
+
+                beforeEach {
+                    badge = AndesBadgeDot(frame: .zero)
+                    contentView = badge.contentView as! AndesBadgeViewDot
+                }
+
+                it("changes badge type dinamycally") {
+                    //Given
+                    let typeToChange: AndesBadgeType = .success
+
+                    //When
+                    badge.type = typeToChange
+
+                    //Then
+                    expect(contentView.backgroundColor).to(equal(AndesBadgeTypeFactory.provide(typeToChange).primaryColor))
                 }
             }
         }

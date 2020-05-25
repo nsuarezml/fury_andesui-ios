@@ -89,6 +89,34 @@
     [oddCasesStack addArrangedSubview:oddBadge];
     
     [_stackView addArrangedSubview:oddCasesStack];
+    
+    UILabel* dotTitle = [[UILabel alloc] initWithFrame:CGRectZero];
+    dotTitle.text = @"Dot";
+    dotTitle.font = [UIFont systemFontOfSize:24];
+    [_stackView addArrangedSubview:dotTitle];
+    
+    UIStackView* allDots = [[UIStackView alloc] init];
+    allDots.axis = UILayoutConstraintAxisVertical;
+    allDots.alignment = UIStackViewAlignmentCenter;
+    allDots.distribution = UIStackViewDistributionFillProportionally;
+    allDots.spacing = 8.0;
+    
+    AndesBadgeDot *neutralDot = [[AndesBadgeDot alloc] initWithType:AndesBadgeTypeNeutral];
+    [allDots addArrangedSubview:neutralDot];
+    
+    AndesBadgeDot *highlightDot = [[AndesBadgeDot alloc] initWithType:AndesBadgeTypeHighlight];
+    [allDots addArrangedSubview:highlightDot];
+    
+    AndesBadgeDot *successtDot = [[AndesBadgeDot alloc] initWithType:AndesBadgeTypeSuccess];
+    [allDots addArrangedSubview:successtDot];
+    
+    AndesBadgeDot *warningDot = [[AndesBadgeDot alloc] initWithType:AndesBadgeTypeWarning];
+    [allDots addArrangedSubview:warningDot];
+    
+    AndesBadgeDot *errorDot = [[AndesBadgeDot alloc] initWithType:AndesBadgeTypeError];
+    [allDots addArrangedSubview:errorDot];
+    
+    [_stackView addArrangedSubview:allDots];
 }
 
 - (void)addPillsWithHierarchy:(AndesBadgeHierarchy)hierarchy toStack:(UIStackView*)stack {

@@ -89,13 +89,13 @@ import UIKit
     }
 
     private func updateContentView() {
-        let config = AndesBadgeViewConfigFactory.provideInternalConfig(from: self)
+        let config = AndesBadgeViewConfigFactory.provideInternalConfig(fromPill: self)
         contentView.update(withConfig: config)
     }
 
     /// Should return a view depending on which Badge modifier is selected
     private func provideView() -> AndesBadgeView {
-        let config = AndesBadgeViewConfigFactory.provideInternalConfig(from: self)
+        let config = AndesBadgeViewConfigFactory.provideInternalConfig(fromPill: self)
         return AndesBadgeViewPill(withConfig: config)
     }
 }

@@ -11,13 +11,16 @@ protocol BadgeView: NSObject {
 }
 
 /// Used to define the type of an AndesBadge
-enum AndesBadgeModifier: String {
-    case pill = "PILL"
+enum AndesBadgeModifier: Int {
+    case pill = 0
+    case dot
 }
 
 class BadgeViewController: UIViewController, BadgeView {
 
-    @IBOutlet weak var badgeView: AndesBadgePill!
+    @IBOutlet weak var badgePillView: AndesBadgePill!
+    @IBOutlet weak var badgeDotView: AndesBadgeDot!
+
     @IBOutlet weak var updateButton: AndesButton!
 
     @IBOutlet weak var modifierField: UITextField!
@@ -49,17 +52,42 @@ class BadgeViewController: UIViewController, BadgeView {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupBaseBadge()
+        setupBadge()
         setupUpdateButton()
         createPickerViews()
     }
 
-    func setupBaseBadge() {
-        badgeView.text = self.textField.text ?? ""
-        badgeView.hierarchy = self.hierarchy
-        badgeView.type = self.type
-        badgeView.size = self.size
-        badgeView.border = self.border
+    func setupBadge() {
+        hideAll()
+        switch self.modifier {
+        case .pill:
+            setupBadgePill()
+        default:
+            setupBadgeDot()
+        }
+    }
+
+    func hideAll() {
+        badgePillView.isHidden = true
+        badgeDotView.isHidden = true
+    }
+
+    func setupBadgePill() {
+        enableAllComponentes(enabled: true)
+        badgePillView.isHidden = false
+        badgePillView.text = self.textField.text ?? ""
+        badgePillView.hierarchy = self.hierarchy
+        badgePillView.type = self.type
+        badgePillView.size = self.size
+        badgePillView.border = self.border
+    }
+
+    func setupBadgeDot() {
+        enableAllComponentes(enabled: false)
+        enableField(field: typeField, enabled: true)
+
+        badgeDotView.isHidden = false
+        badgeDotView.type = self.type
     }
 
     func setupUpdateButton() {
@@ -94,9 +122,21 @@ class BadgeViewController: UIViewController, BadgeView {
     }
 
     @IBAction func updateButtonTouched(_ sender: Any) {
-        setupBaseBadge()
+        setupBadge()
     }
 
+    func enableAllComponentes(enabled: Bool) {
+        enableField(field: hierarchyField, enabled: enabled)
+        enableField(field: typeField, enabled: enabled)
+        enableField(field: sizeField, enabled: enabled)
+        enableField(field: borderField, enabled: enabled)
+        enableField(field: textField, enabled: enabled)
+    }
+
+    func enableField(field: UITextField, enabled: Bool) {
+        field.isEnabled = enabled
+        field.alpha = enabled ? 1.0 : 0.3
+    }
 }
 
 extension BadgeViewController: UIPickerViewDelegate {
@@ -104,7 +144,7 @@ extension BadgeViewController: UIPickerViewDelegate {
         switch pickerView {
         case modifierPicker:
             modifierField.resignFirstResponder()
-            self.modifier = AndesBadgeModifier.pill
+            self.modifier = AndesBadgeModifier.init(rawValue: row)!
             modifierField.text = modifier.toString()
         case hierarchyPicker:
             hierarchyField.resignFirstResponder()
@@ -136,7 +176,7 @@ extension BadgeViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
         case modifierPicker:
-            return 1
+            return 2
         case hierarchyPicker:
             return 2
         case typePicker:
@@ -153,7 +193,7 @@ extension BadgeViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
         case modifierPicker:
-            return AndesBadgeModifier.pill.rawValue
+            return AndesBadgeModifier.init(rawValue: row)!.toString()
         case hierarchyPicker:
             return AndesBadgeHierarchy.init(rawValue: row)!.toString()
         case typePicker:
@@ -173,6 +213,8 @@ extension AndesBadgeModifier {
         switch self {
         case .pill:
             return "Pill"
+        case .dot:
+            return "Dot"
         }
     }
 }

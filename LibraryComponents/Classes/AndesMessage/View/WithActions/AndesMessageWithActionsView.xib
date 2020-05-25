@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AndesMessageWithActionsView" customModule="AndesUI" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AndesMessageWithActionsView" customModule="AndesUI">
             <connections>
                 <outlet property="bodyLabel" destination="58O-gd-Aup" id="ohB-Bn-CwC"/>
                 <outlet property="dismissButton" destination="AH2-H9-2Dt" id="Xox-4a-AFE"/>
@@ -87,14 +87,14 @@
                         </label>
                     </subviews>
                 </stackView>
-                <view contentMode="scaleToFill" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="21.5" translatesAutoresizingMaskIntoConstraints="NO" id="HbG-CF-Oqd" customClass="AndesButton" customModule="AndesUI" customModuleProvider="target">
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="21.5" translatesAutoresizingMaskIntoConstraints="NO" id="HbG-CF-Oqd" customClass="AndesButton" customModule="AndesUI">
                     <rect key="frame" x="48" y="77.5" width="50" height="21.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <action selector="primaryButtonTapped:" destination="-1" eventType="touchUpInside" id="kho-RD-LfD"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" placeholderIntrinsicWidth="322" placeholderIntrinsicHeight="21.5" translatesAutoresizingMaskIntoConstraints="NO" id="UDP-xQ-Pdx" customClass="AndesButton" customModule="AndesUI" customModuleProvider="target">
+                <view contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" placeholderIntrinsicWidth="322" placeholderIntrinsicHeight="21.5" translatesAutoresizingMaskIntoConstraints="NO" id="UDP-xQ-Pdx" customClass="AndesButton" customModule="AndesUI">
                     <rect key="frame" x="114" y="77.5" width="164" height="21.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>

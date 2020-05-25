@@ -47,7 +47,7 @@ class AndesShowcasePageViewController: UIViewController {
         containerView.bringSubview(toFront: pageControl)
         setupPageControl()
         if #available(iOS 11.0, *) {} else {
-            //iOS < 10 fix https://forums.developer.apple.com/thread/87329
+            //iOS <= 10 fix https://forums.developer.apple.com/thread/87329
             guard let topBarHeight = self.navigationController?.navigationBar.frame.height else {
                 return
             }

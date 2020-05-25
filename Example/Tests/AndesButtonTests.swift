@@ -17,7 +17,8 @@ class AndesButtonTests: QuickSpec {
             context("AndesButtonLarge is selected") {
                 it("Should be an AndesButtonLargeLeftIcon subclass if icon is provided and orientation is left") {
                     //Given
-                    let icon = AndesButtonIcon(icon: UIImage(), orientation: .left)
+                    let iconImage = UIImage(named: "andes")!
+                    let icon = AndesButtonIcon(icon: iconImage, orientation: .left)
                     let title = "Comprar"
 
                     //When
@@ -29,7 +30,8 @@ class AndesButtonTests: QuickSpec {
 
                 it("Should be an AndesButtonLargeLeftIcon subclass if icon is provided and orientation is right") {
                     //Given
-                    let icon = AndesButtonIcon(icon: UIImage(), orientation: .right)
+                    let iconImage = UIImage(named: "andes")!
+                    let icon = AndesButtonIcon(icon: iconImage, orientation: .right)
                     let title = "Comprar"
 
                     //When
@@ -53,10 +55,11 @@ class AndesButtonTests: QuickSpec {
                 it("Should be an AndesButtonLargeLeftIcon subclass if no icon is provided but is setted after constructor") {
                     //Given
                     let title = "Comprar"
+                    let icon = UIImage(named: "andes")!
 
                     //When
                     let button = AndesButton(text: title, hierarchy: .loud, size: .large)
-                    button.setLargeSizeWithIcon(AndesButtonIcon(icon: UIImage(), orientation: .left))
+                    button.setLargeSizeWithIcon(AndesButtonIcon(icon: icon, orientation: .left))
 
                     //Expect
                     expect(button.view.isKind(of: AndesButtonViewIconLeft.self)).to(beTrue())
